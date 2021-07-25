@@ -1,0 +1,40 @@
+.menu {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 13%, rgba(63, 140, 126, 1) 100%);
+}
+
+.menu__items {
+  padding: 1em;
+}
+
+.menu__ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.menu__li {
+  flex-grow: 1;
+}
+
+.menu__item {
+  font-family: Arial;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background-color: $color-naranja;
+  display: block;
+  text-decoration: none;
+  padding: 0.5em 1em;
+}
+.menu__item:hover {
+  background: $color-naranja;
+  color: white;
+  transform: scale(1.5, 1.5);
+}
+.menu__logo {
+  width: 100px;
+}
