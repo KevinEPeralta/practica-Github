@@ -4,13 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/estilos.css">
+	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">	
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
 	<title>Tgroup Sistemas</title>	
 </head>
 
@@ -44,24 +45,19 @@
 	  </nav>
 	</header> 
 
-	<h2>NUESTROS CLIENTES</h2>
+	<h1>NUESTROS CLIENTES</h1>
 	<main>
-		<table class="tabla">
-			<tr>
-				<td><img src="clientes/cliente1.jpg" alt="cliente1"></td>
-				<td>"Resolvimos nuestro problema con el control de stock al tener un registro completo de los ingresos y salidas monitoreado por el sistema"</td>
-				<td><img src="clientes/cliente2.jpg" alt="cliente2"></td>
-				<td>"Agilizamos la facturación y entrega de productos"</td>
-			</tr>
-			<tr>
-				<td><img src="clientes/cliente3.jpg" alt="cliente3"></td>
-				<td>"Cumple con lo que solicitamos y necesitamos"</td>
-				<td><img src="clientes/cliente4.jpg" alt="cliente4"></td>
-				<td>"Mejoramos completamente nuestra manera de organizarnos. Nos sacamos un peso de encima el dejar de utilizar excel"</td>			
-			</tr>
-		</table>
+		<ul class="flex-container nowrap">
+			<li class="flex-item"><img src="clientes/cliente1.jpg" alt="cliente1"></li>
+			<li class="flex-item">"Resolvimos nuestro problema con el control de stock al tener un registro completo de los ingresos y salidas monitoreado por el sistema"</li>
+			<li class="flex-item"><img src="clientes/cliente2.jpg" alt="cliente2"></li>
+			<li class="flex-item">"Agilizamos la facturación y entrega de productos"</li>
+			<li class="flex-item"><img src="clientes/cliente3.jpg" alt="cliente3"></li>
+			<li class="flex-item">"Cumple con lo que solicitamos y necesitamos"</li>
+			<li class="flex-item"><img src="clientes/cliente4.jpg" alt="cliente4"></li>
+			<li class="flex-item">"Mejoramos completamente nuestra manera de organizarnos. Nos sacamos un peso de encima el dejar de utilizar excel"</li>
+		</ul>
 	</main>
-
 	<footer>
 		<div>
 			Autor: Kevin Peralta
