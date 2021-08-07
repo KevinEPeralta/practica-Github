@@ -1,0 +1,72 @@
+.contacto {
+  display: flex;
+  padding: 30px;
+  background-color: white;
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  .contacto {
+    flex-direction: column;
+  }
+}
+
+.contacto__form {
+  padding: 30px;
+  flex-grow: 1;
+}
+
+.contacto__form__item {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: $color-verde;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+.contacto__form__item-input {
+  display: flex;
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid $color-gris;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+.contacto__form__item-boton {
+  display: flex;
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid $color-gris;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.contacto__form__item-boton:hover {
+  background-color: $color-gris;
+}
+
+.contacto__datos {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  flex-grow: 1;
+}
+.contacto__datos-lista {
+  border: $color-verde solid 5px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.contacto__datos-titulo {
+  display: flex;
+  justify-content: center;
+  background: $color-naranja;
+  height: 40px;
+}
+
+.contacto__datos-mapa {
+  justify-content: center;
+}
