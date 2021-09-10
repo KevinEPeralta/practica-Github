@@ -1,86 +1,103 @@
-let deporte, dia;
-let reservada = false;
-let disponible;
+class Cancha{
+    horarioApertura;
+    horarioCierre;
 
-function reservaDeFutbol(deporte){
-    disponible = verificarDia(deporte);
-    if(disponible){
-        dia=prompt("Qué día desea reservar?");
-        return reservada=true;
+    constructor(horarioApertura,horarioCierre){
+        this.horarioApertura = horarioApertura;
+        this.horarioCierre = horarioCierre;
     }
 }
 
-function reservaDePadel(deporte){
-    disponible = verificarDia(deporte);
-    if(disponible){
-        dia=prompt("Qué día desea reservar?");
-        return reservada=true;
+class Reserva{
+    dia;
+    horario;
+    cliente;
+    cancha;
+
+    constructor(dia,horario,cliente,cancha){
+        this.dia = dia;
+        this.horario = horario;
+        this.cliente = cliente;
+        this.cancha = cancha;
     }
-}
 
-function reservaDeTenis(deporte){    
-    disponible = verificarDia(deporte);
-    if(disponible){
-        dia=prompt("Qué día desea reservar?");
-        return reservada=true;
-    }
-    
-}
+    reservar = () => {
+        
+        let reservasStorage = JSON.parse(localStorage.getItem("reservas"))
 
-function verificarDia(deporteElegido){
-    let diasDisponiblesPadel=["lunes","miercoles","jueves","sabado","domingo"];
-    let diasDisponiblesTenis=["lunes","jueves", "sabado"];
-    let diasDisponiblesFutbol=[];
-
-    switch (deporteElegido) {
-        case "tenis": if(diasDisponiblesTenis.length == 0){
-            alert("No hay canchas disponibles"); 
-            break;
-        } else {
-            alert ("Los días dipsonibles son: " + diasDisponiblesTenis);
-            return disponible=true 
-            }
-
-        case "futbol": if(diasDisponiblesFutbol.length == 0){
-            alert("No hay canchas disponibles"); 
-            break;
-        } else {
-            alert("Los días dipsonibles son: " +diasDisponiblesFutbol); 
-            return disponible=true 
+        const reserva = {dia: this.dia, 
+            horario:this.horario,
+            cliente: this.cliente,
+            cancha:this.cancha
         }
 
-        case "padel": if(diasDisponiblesPadel.length == 0){
-            alert("No hay canchas disponibles"); 
-            break;
-        } else {
-            alert("Los días dipsonibles son: " +diasDisponiblesPadel);
-            return disponible=true  
-         
-        }   
+        if(reservasStorage){
+            reservasStorage.push(reserva)         
+        }else{    
+            reservasStorage=[reserva]        
+        }
+        
+        document.getElementById(`${reserva.cancha}${reserva.dia}${reserva.horario}`).innerHTML = `<button style="background-color:red">Reservado</button>`        
+        localStorage.setItem("reservas", JSON.stringify(reservasStorage));
     }
 }
 
-alert ("Bienvenido a Kicker");
-alert("Que deporte querés reservar?");
-while (!reservada){
-deporte = prompt("Tenis, fútbol o padel? (escriba en minúsculas y sin tilde)");
-alert("elegiste: " + deporte);
-    switch (deporte) {
-        case "tenis": reservada = reservaDeTenis(deporte);
-    //recordatorio: posibles secciones, cancha, horario, dia, y reserva de raqueta y pelotitas      
-            break;
-
-        case "futbol": reservada = reservaDeFutbol(deporte);
-            break;
-    //recordatorio: posibles secciones, cancha, horario, dia, y reserva de pelota
-
-        case "padel": reservada = reservaDePadel(deporte) 
-            break;
-    //recordatorio: posibles secciones, cancha, horario, dia, y reserva de paleta y pelotitas
-
-        default: alert("no tenemos canchas para " + deporte + ". Por favor, revise nuestras opciones nuevamente. ")
-            break;
-    }
+//Inicializo cada cancha, con sus horarios de apertura y cierre
+const canchas = {
+    futbol: new Cancha(10,23),
+    tenis: new Cancha(8,17),
+    padel: new Cancha(16,23)
 }
-alert("Te esperamos!");
+ 
+if(!localStorage.getItem("dias")){
+     dias = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+    localStorage.setItem("dias", JSON.stringify(dias))
+}else{
+     dias = JSON.parse(localStorage.getItem("dias"))
+}
+ 
+window.onload = () =>{
+    document.getElementById("deportes").onchange = evento => {
+        const deporte = evento.target.value;
+        let elementosDias='';
 
+        for (const dia of dias) {
+            elementosDias += `<th>${dia}</th>` 
+        }
+
+        document.getElementById("reservas").innerHTML = 
+            `<tr>
+            <th>Horarios</th>
+            ${elementosDias}           
+            </tr>`;
+
+        for (let horario = canchas[deporte].horarioApertura; horario <= canchas[deporte].horarioCierre; horario++) {    
+            const fila = document.createElement("tr");  
+            fila.innerHTML = `<td>${horario}:00</td>`;
+
+            for (let dia = 0; dia < 7; dia++) {
+                let reservasStorage = JSON.parse(localStorage.getItem("reservas"))
+                if (reservasStorage) {                    
+                    const reservado = () =>{
+                        let encontrado;
+                        encontrado = reservasStorage.find(reserva => reserva.dia === dia && reserva.horario === horario && reserva.cancha === deporte)                        
+                        return encontrado;                                                       
+                    }
+                    if (reservado()) {
+                        fila.innerHTML += `<td id='${deporte}${dia}${horario}'><button style="background-color:red">Reservado</button></td>`
+                    }else{
+                        fila.innerHTML += `<td id='${deporte}${dia}${horario}'><button onclick = "reservar('${deporte}',${dia},${horario})">Reservar</button></td>`
+                    }                    
+                }else{
+                    fila.innerHTML += `<td id='${deporte}${dia}${horario}'><button onclick = "reservar('${deporte}',${dia},${horario})">Reservar</button></td>`
+                }
+            }     
+            document.getElementById("reservas").appendChild(fila);           
+        }            
+    }    
+}  
+
+const reservar = (deporte, dia, horario) =>{
+    const cliente = prompt("Ingrese su nombre")
+    new Reserva(dia,horario,cliente,deporte).reservar();
+}
