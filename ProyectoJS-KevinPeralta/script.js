@@ -98,6 +98,11 @@ window.onload = () =>{
 }  
 
 const reservar = (deporte, dia, horario) =>{
-    const cliente = prompt("Ingrese su nombre")
-    new Reserva(dia,horario,cliente,deporte).reservar();
+    const cliente = document.getElementById("cliente").value;
+    if (cliente ===""){
+        alert("No ingresó ningún nombre para reservar!, llene la casilla indicada como Nombre de reserva."   )
+        exit;
+    }else{
+        new Reserva(dia,horario,cliente,deporte).reservar();
+    }
 }
