@@ -56,8 +56,8 @@ if(!localStorage.getItem("dias")){
      dias = JSON.parse(localStorage.getItem("dias"))
 }
  
-window.onload = () =>{
-    document.getElementById("deportes").onchange = evento => {
+$(() => {
+    $("#deportes").change ( evento => {
         const deporte = evento.target.value;
         let elementosDias='';
 
@@ -65,15 +65,12 @@ window.onload = () =>{
             elementosDias += `<th>${dia}</th>` 
         }
 
-        document.getElementById("reservas").innerHTML = 
-            `<tr>
-            <th>Horarios</th>
-            ${elementosDias}           
-            </tr>`;
+        //document.getElementById("reservas").innerHTML = 
+        $("#reservas").html("<tr><th>Horarios</th>"+elementosDias+"</tr>")
 
-        for (let horario = canchas[deporte].horarioApertura; horario <= canchas[deporte].horarioCierre; horario++) {    
-            const fila = document.createElement("tr");  
-            fila.innerHTML = `<td>${horario}:00</td>`;
+            for (let horario = canchas[deporte].horarioApertura; horario <= canchas[deporte].horarioCierre; horario++) {    
+                const fila = document.createElement("tr");  
+                fila.innerHTML = `<td>${horario}:00</td>`;
 
             for (let dia = 0; dia < 7; dia++) {
                 let reservasStorage = JSON.parse(localStorage.getItem("reservas"))
@@ -92,13 +89,14 @@ window.onload = () =>{
                     fila.innerHTML += `<td id='${deporte}${dia}${horario}'><button onclick = "reservar('${deporte}',${dia},${horario})">Reservar</button></td>`
                 }
             }     
-            document.getElementById("reservas").appendChild(fila);           
+            $("#reservas").append(fila);           
         }            
-    }    
-}  
+    })    
+})  
 
 const reservar = (deporte, dia, horario) =>{
-    const cliente = document.getElementById("cliente").value;
+    
+    const cliente = $("#cliente").val();
     if (cliente ===""){
         alert("No ingresó ningún nombre para reservar!, llene la casilla indicada como Nombre de reserva."   )
         exit;
