@@ -5,22 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canchas deportivas - Kicker</title>
+    <link rel="stylesheet" href="main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </head>
 <body>    
-    <h1>Bienvenido a kicker</h1>
-    <h2>Elija el deporte para mostrar el listado de horarios disponibles</h2>
-    <p>Nombre de Reserva: <input id="cliente" type="text" name="nombre"></p>
-    <select name="deportes" id="deportes">
-        <option value="" disabled selected>Deporte</option>
-        <option value="tenis">Tenis</option>
-        <option value="padel">Padel</option>
-        <option value="futbol">Futbol</option>        
-    </select>    
-    <table>
-        <tbody id="reservas">        
-        </tbody>       
+    <h1>Bienvenido a nuestro club</h1>
+    <div class="center">
+        <h2>Elija el deporte para mostrar el listado de horarios disponibles</h2>
+        <p>Nombre de Reserva: <input id="cliente" type="text" name="nombre"></p>   
+        <div id="alerta" class="alerta">
+            <p>No ingresó ningún nombre para reservar!, llene la casilla indicada como Nombre de reserva.</p>
+        </div>
+        <select name="deportes" id="deportes">
+            <option value="" disabled selected>Deporte</option>
+            <option value="Tenis">Tenis</option>
+            <option value="Padel">Padel</option>
+            <option value="Futbol">Futbol</option>        
+        </select>  
+    </div>
+    
+    <div class= "datosReserva" id="datosReserva"></div>
+    <table class="center">
+        <tbody id="reservas" ></tbody>       
     </table>
 </body>
 </html>

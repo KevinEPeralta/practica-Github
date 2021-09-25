@@ -1,0 +1,100 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+body{
+  background: #ededed;
+}
+
+h1{
+  text-align: center;
+  background-color: crimson;
+  margin: 40px;
+  padding: 50px;
+  font-size: 40px;
+  border-radius: 40px;
+  color: aliceblue;
+
+}
+.center{
+  text-align: center;
+  background-color: aquamarine;
+  margin: 40px;
+}
+
+table.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+select{
+  width: 200px;
+  text-align: center;
+  height: 40px;
+  font-size: large;
+}
+
+.botones{
+  max-width: 200px;
+}
+
+.bordeTurnos{
+  background-color: grey; 
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.reservar{
+  background-color: green;
+  border: none;
+  color: white;
+  width: 110px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.reservar:hover{
+  background-color: rgb(71, 204, 54);
+}
+
+.reservado{
+  background-color: rgb(212, 9, 9); 
+  border: none;
+  color: white;
+  width: 110px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.reservado:hover{
+  background-color: brown;
+}
+
+.datosReserva{
+  display: none;
+}
+
+.alerta{
+  display: none;
+  background-color: red;
+  padding: 1px;
+  margin: 5px;
+  text-align: center;
+  color: white;
+}
+
+.reserva{
+  text-align: center;
+  padding: 20px;
+  background-color: aquamarine;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
