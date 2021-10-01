@@ -63,8 +63,19 @@ const canchas = {
  
 const dias = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
 
+
 $(() => {
+
+    $("#inicial").click(() =>{
+        $.getJSON("reservas.json",(reservas)=>{
+            localStorage.setItem("reservas", JSON.stringify(reservas));
+            $("#deportes").val('');
+            $("#reservas").html('<p>Reservas inicializadas en local storage, eliga un deporte</p>')
+        })
+    })
+
     $("#deportes").change ( evento => {
+       
         const deporte = evento.target.value;
         let elementosDias='';
 
